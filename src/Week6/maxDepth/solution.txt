@@ -1,0 +1,17 @@
+class Solution {
+    public int maxDepth(TreeNode root) {
+        List<Integer> depths = new ArrayList<>();
+        check(root, depth, depths);
+        return depths.isEmpty() ? 0 : Collections.max(depths);
+    }
+
+    public void check(TreeNode root, int depth, List<Integer> depths) {
+        if(root == null) {
+            return;
+        }
+        depth++;
+        depths.add(depth);
+        check(root.left, depth);
+        check(root.right, depth);
+    }
+}
